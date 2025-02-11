@@ -9,18 +9,23 @@
       rel="stylesheet"
     />
     <style>
+      /* Basic reset and font setting */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: "SF Pro Rounded", sans-serif;
       }
+
+      /* Center the phone screen on page */
       body {
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
       }
+
+      /* Phone screen styling */
       .screen {
         width: 375px;
         height: 812px;
@@ -30,11 +35,15 @@
         overflow: hidden;
         position: relative;
       }
+
+      /* Highlight selected icon with dotted outline */
       .selected {
         position: relative;
         cursor: move;
         outline: 3px dotted rgb(0, 0, 0);
       }
+
+      /* Icon image styling */
       .app-icon {
         width: 80%;
         height: 80%;
@@ -42,39 +51,41 @@
         pointer-events: none;
         padding: 2px;
       }
+
       .apps > div {
         user-select: none;
         -webkit-user-select: none;
         position: relative;
       }
-      .resize-handle {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background-color: #000000;
-        bottom: 0;
-        right: 0;
-        cursor: se-resize;
-        display: none;
-      }
+
+      /* Resize and rotate handle styling */
+      .resize-handle,
       .rotate-handle {
         position: absolute;
         width: 10px;
         height: 10px;
-        background-color: #000000;
+        background-color: #000;
+        display: none;
+      }
+      .resize-handle {
+        bottom: 0;
+        right: 0;
+        cursor: se-resize;
+      }
+      .rotate-handle {
         top: -15px;
         left: 50%;
         transform: translateX(-50%);
         cursor: grab;
         border-radius: 50%;
-        display: none;
       }
       .selected .resize-handle,
       .selected .rotate-handle {
         display: block;
       }
-      @media (max-width: 768px) {
 
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
         body {
           height: 100vh;
         }
@@ -88,11 +99,25 @@
   </head>
   <body>
     <div class="screen">
-      <div class="status-bar text-white flex text-l justify-between items-center px-8 py-3">
+      <!-- Status bar -->
+      <div
+        class="status-bar text-white flex text-l justify-between items-center px-8 py-3"
+      >
         <div class="status-bar__time">9:41</div>
         <div class="right flex justify-between items-center">
           <div class="status-bar__network">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-antenna-bars-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-antenna-bars-5"
+            >
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M6 18l0 -3" />
               <path d="M10 18l0 -6" />
@@ -101,7 +126,18 @@
             </svg>
           </div>
           <div class="status-bar__wifi">
-            <svg xmlns="http://www.w3.org/20000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-wifi-2">
+            <svg
+              xmlns="http://www.w3.org/20000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-wifi-2"
+            >
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M12 18l.01 0" />
               <path d="M9.172 15.172a4 4 0 0 1 5.656 0" />
@@ -111,29 +147,56 @@
           <div class="status-bar__battery">100%</div>
         </div>
       </div>
+
+      <!-- Icons row -->
       <div class="apps flex items-center mt-4 justify-evenly">
-        <div class="app1 flex justify-center items-center bg-white rounded-xl h-20 w-20">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/640px-Instagram_icon.png" alt="Instagram" class="app-icon" />
+        <div
+          class="app1 flex justify-center items-center bg-white rounded-xl h-20 w-20"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/640px-Instagram_icon.png"
+            alt="Instagram"
+            class="app-icon"
+          />
           <div class="resize-handle"></div>
           <div class="rotate-handle"></div>
         </div>
-        <div class="app2 flex justify-center items-center bg-white rounded-xl h-20 w-20">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/App_Store_%28iOS%29.svg/512px-App_Store_%28iOS%29.svg.png" alt="AppStore" class="app-icon" />
+        <div
+          class="app2 flex justify-center items-center bg-white rounded-xl h-20 w-20"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/App_Store_%28iOS%29.svg/512px-App_Store_%28iOS%29.svg.png"
+            alt="AppStore"
+            class="app-icon"
+          />
           <div class="resize-handle"></div>
           <div class="rotate-handle"></div>
         </div>
-        <div class="app3 flex justify-center items-center bg-white rounded-xl h-20 w-20">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Safari_browser_logo.svg/800px-Safari_browser_logo.svg.png" alt="Safari" class="app-icon" />
+        <div
+          class="app3 flex justify-center items-center bg-white rounded-xl h-20 w-20"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Safari_browser_logo.svg/800px-Safari_browser_logo.svg.png"
+            alt="Safari"
+            class="app-icon"
+          />
           <div class="resize-handle"></div>
           <div class="rotate-handle"></div>
         </div>
-        <div class="app4 flex justify-center items-center bg-white rounded-xl h-20 w-20">
-          <img src="https://www.cdnlogo.com/logos/w/29/whatsapp-icon.svg" alt="WhatsApp" class="app-icon" />
+        <div
+          class="app4 flex justify-center items-center bg-white rounded-xl h-20 w-20"
+        >
+          <img
+            src="https://www.cdnlogo.com/logos/w/29/whatsapp-icon.svg"
+            alt="WhatsApp"
+            class="app-icon"
+          />
           <div class="resize-handle"></div>
           <div class="rotate-handle"></div>
         </div>
       </div>
     </div>
+
     <script>
       window.addEventListener("load", () => {
         const screen = document.querySelector(".screen");
@@ -145,11 +208,9 @@
         let offsetY = 0;
         let initialAngle = 0;
         let currentAngle = 0;
-        let aspectRatio = 1;
 
-        // Add click handler to screen for deselection
+        // Deselect all icons when user clicks outside icons
         screen.addEventListener("mousedown", (e) => {
-          // Check if click is directly on the screen or apps container
           if (e.target === screen || e.target.classList.contains("apps")) {
             deselectAll();
           }
@@ -163,12 +224,13 @@
           active = null;
         }
 
+        // Setup event listeners on each icon
         icons.forEach((icon) => {
           const resizeHandle = icon.querySelector(".resize-handle");
           const rotateHandle = icon.querySelector(".rotate-handle");
 
           icon.addEventListener("mousedown", (e) => {
-            e.stopPropagation(); // Prevent event from bubbling to screen
+            e.stopPropagation();
             if (e.target === resizeHandle) {
               startResize(e, icon);
             } else if (e.target === rotateHandle) {
@@ -179,6 +241,7 @@
           });
         });
 
+        // Allows dragging of icon
         function startDrag(e, icon) {
           deselectAll();
           active = icon;
@@ -191,20 +254,20 @@
           document.addEventListener("mouseup", onStop);
         }
 
+        // Allows resizing of icon
         function startResize(e, icon) {
           e.stopPropagation();
           isResizing = true;
           active = icon;
           const startWidth = icon.offsetWidth;
           const startX = e.pageX;
-          const startY = e.pageY;
 
           function onResize(e) {
             if (!isResizing) return;
             const dx = e.pageX - startX;
-            const newSize = Math.max(40, startWidth + dx); // Minimum size of 40px
+            const newSize = Math.max(40, startWidth + dx);
             active.style.width = `${newSize}px`;
-            active.style.height = `${newSize}px`; // Maintain square proportion
+            active.style.height = `${newSize}px`;
           }
 
           document.addEventListener("mousemove", onResize);
@@ -214,6 +277,7 @@
           });
         }
 
+        // Allows rotating of icon
         function startRotate(e, icon) {
           e.stopPropagation();
           isRotating = true;
@@ -226,7 +290,10 @@
 
           function onRotate(e) {
             if (!isRotating) return;
-            const angle = Math.atan2(e.pageY - iconCenterY, e.pageX - iconCenterX);
+            const angle = Math.atan2(
+              e.pageY - iconCenterY,
+              e.pageX - iconCenterX
+            );
             const rotation = angle - initialAngle;
             const newAngle = (currentAngle + rotation * (180 / Math.PI)) % 360;
             active.style.transform = `rotate(${newAngle}deg)`;
@@ -239,23 +306,20 @@
           });
         }
 
+        // Moves icon as cursor moves, keeps icon within screen
         function onDrag(e) {
           if (!active || isResizing || isRotating) return;
           const screenRect = screen.getBoundingClientRect();
           const iconRect = active.getBoundingClientRect();
-          
-          // Calculate new position while keeping the icon within screen bounds
           let newX = e.pageX - offsetX - screenRect.left;
           let newY = e.pageY - offsetY - screenRect.top;
-          
-          // Apply bounds checking
           newX = Math.max(0, Math.min(newX, screenRect.width - iconRect.width));
           newY = Math.max(0, Math.min(newY, screenRect.height - iconRect.height));
-          
           active.style.left = `${newX}px`;
           active.style.top = `${newY}px`;
         }
 
+        // Stops dragging/resizing/rotating
         function onStop() {
           isResizing = false;
           isRotating = false;
@@ -263,6 +327,7 @@
           document.removeEventListener("mouseup", onStop);
         }
 
+        // Retrieves current rotation angle
         function getRotationAngle(element) {
           const transform = window.getComputedStyle(element).getPropertyValue('transform');
           if (transform === 'none') return 0;
@@ -273,6 +338,7 @@
         }
       });
 
+      // Reset all icons to original grid positions
       function resetToGrid() {
         const apps = document.querySelector(".apps");
         const icons = document.querySelectorAll(".apps > div");
@@ -291,8 +357,13 @@
         });
       }
     </script>
+
+    <!-- Reset button -->
     <div class="fixed bottom-4 right-4 space-x-2">
-      <button onclick="resetToGrid()" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+      <button
+        onclick="resetToGrid()"
+        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+      >
         Reset to Grid
       </button>
     </div>
