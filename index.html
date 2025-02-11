@@ -1,207 +1,241 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>iphone + homeup</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "SF Pro Rounded", sans-serif;
-      }
-      .screen {
-        width: 375px;
-        height: 750px;
-        background-image: url("https://images.unsplash.com/photo-1737917818689-f3b3708de5d7?q=80&w=1926&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-        background-size: cover;
-        border-radius: 50px;
-        margin: 0px auto;
-        overflow: hidden;
-      }
-      .selected {
-        position: relative;
-        cursor: move;
-      }
-      .app-icon {
-        width: 80%;
-        height: 80%;
-        object-fit: contain;
-        pointer-events: none;
-        padding: 2px;
-      }
-      .apps > div {
-        user-select: none;
-        -webkit-user-select: none;
-      }
-      /* media query no scroll bar*/
-      @media (max-width: 768px) {
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          overflow: hidden;
-        }
-        body {
-          height: 100vh;
-        }
-        .screen {
-          width: 100%;
-          height: 100vh;
-          border-radius: 0;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="screen">
-      <div
-        class="status-bar text-white flex text-l justify-between items-center px-8 py-3"
-      >
-        <div class="status-bar__time">9:41</div>
-        <div class="right flex justify-between items-center">
-          <div class="status-bar__network">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-antenna-bars-5"
+<!DOCTYPE html> <!-- Defines the document as HTML5 -->
+<html lang="en"> <!-- Sets the primary language of the page to English -->
+    <head>
+        <!-- Character encoding -->
+        <meta charset="UTF-8" />
+        <!-- Makes the page mobile-responsive -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Page title -->
+        <title>iphone online dummy</title>
+        <!-- Tailwind CSS for utility classes -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+            rel="stylesheet"
+        />
+        <!-- Inline CSS for basic styling -->
+        <style>
+            * {
+                margin: 0; /* Removes default margin */
+                padding: 0; /* Removes default padding */
+                box-sizing: border-box; /* Ensures consistent width/height calculations */
+                font-family: "SF Pro Rounded", sans-serif; /* Sets default font */
+            }
+            body {
+                height: 100vh; /* Full viewport height */
+                display: flex; /* Uses flex layout */
+                justify-content: center; /* Center horizontally */
+                align-items: center; /* Center vertically */
+            }
+            .screen {
+                width: 375px; /* Typical phone width */
+                height: 812px; /* Typical phone height */
+                background-image: url("https://images.unsplash.com/photo-1737917818689-f3b3708de5d7?q=80&w=1926&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+                background-size: cover; /* Scales image to cover area */
+                border-radius: 50px; /* Rounded corners */
+                overflow: hidden; /* Hides overflowing elements */
+            }
+            /* Outline style for the icon when selected for drag */
+            .selected {
+                position: relative;
+                cursor: move;
+                outline: 3px dotted rgb(0, 0, 0);
+            }
+            .app-icon {
+                width: 80%; /* Icon width relative to parent */
+                height: 80%; /* Icon height relative to parent */
+                object-fit: contain; /* Keeps aspect ratio */
+                pointer-events: none; /* Disables mouse events on image */
+                padding: 2px; /* Spacing around the icon */
+            }
+            .apps > div {
+                user-select: none; /* Disables text selection */
+                -webkit-user-select: none; /* Disables text selection in WebKit browsers */
+            }
+            /* For smaller screens, remove scrollbars and adjust layout */
+            @media (max-width: 768px) {
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    overflow: hidden;
+                }
+                body {
+                    height: 100vh;
+                }
+                .screen {
+                    width: 100%; /* Full width on small screens */
+                    height: 100vh; /* Full height on small screens */
+                    border-radius: 0; /* Removes corner radius */
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Main phone screen container -->
+        <div class="screen">
+            <!-- Status bar at the top -->
+            <div
+                class="status-bar text-white flex text-l justify-between items-center px-8 py-3"
             >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M6 18l0 -3" />
-              <path d="M10 18l0 -6" />
-              <path d="M14 18l0 -9" />
-              <path d="M18 18l0 -12" />
-            </svg>
-          </div>
-          <div class="status-bar__wifi">
-            <svg
-              xmlns="http://www.w3.org/20000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-wifi-2"
+                <div class="status-bar__time">9:41</div>
+                <div class="right flex justify-between items-center">
+                    <!-- Display network icon -->
+                    <div class="status-bar__network">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-antenna-bars-5"
+                        >
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M6 18l0 -3" />
+                            <path d="M10 18l0 -6" />
+                            <path d="M14 18l0 -9" />
+                            <path d="M18 18l0 -12" />
+                        </svg>
+                    </div>
+                    <!-- Display Wi-Fi icon -->
+                    <div class="status-bar__wifi">
+                        <svg
+                            xmlns="http://www.w3.org/20000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-wifi-2"
+                        >
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 18l.01 0" />
+                            <path d="M9.172 15.172a4 4 0 0 1 5.656 0" />
+                            <path d="M6.343 12.343a8 8 0 0 1 11.314 0" />
+                        </svg>
+                    </div>
+                    <!-- Display battery info text -->
+                    <div class="status-bar__battery">100%</div>
+                </div>
+            </div>
+            <!-- Container for app icons -->
+            <div class="apps flex items-center mt-4 justify-evenly">
+                <!-- First app icon with background -->
+                <div
+                    class="app1 flex justify-center items-center bg-white rounded-xl h-20 w-20"
+                >
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/640px-Instagram_icon.png"
+                        alt="Instagram"
+                        class="app-icon"
+                    />
+                </div>
+                <!-- Second app icon -->
+                <div
+                    class="app2 flex justify-center items-center bg-white rounded-xl h-20 w-20"
+                >
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/App_Store_%28iOS%29.svg/512px-App_Store_%28iOS%29.svg.png"
+                        alt="AppStore"
+                        class="app-icon"
+                    />
+                </div>
+                <!-- Third app icon -->
+                <div
+                    class="app3 flex justify-center items-center bg-white rounded-xl h-20 w-20"
+                >
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Safari_browser_logo.svg/800px-Safari_browser_logo.svg.png"
+                        alt="Safari"
+                        class="app-icon"
+                    />
+                </div>
+                <!-- Fourth app icon -->
+                <div
+                    class="app4 flex justify-center items-center bg-white rounded-xl h-20 w-20"
+                >
+                    <img
+                        src="https://www.cdnlogo.com/logos/w/29/whatsapp-icon.svg"
+                        alt="WhatsApp"
+                        class="app-icon"
+                    />
+                </div>
+            </div>
+        </div>
+        <script>
+            // Listens for the page to fully load
+            window.addEventListener("load", () => {
+                const icons = document.querySelectorAll(".apps > div"); // Get all app divs
+                let active = null; // Will hold the currently dragged icon
+                let offsetX = 0; // X offset for dragging
+                let offsetY = 0; // Y offset for dragging
+
+                // Add mouse event listeners to each icon
+                icons.forEach((icon) => {
+                    icon.addEventListener("mousedown", (e) => {
+                        // Remove 'selected' from any other icon
+                        icons.forEach((i) => i.classList.remove("selected"));
+                        active = icon; // The icon being dragged
+                        offsetX = e.offsetX; // Store initial X offset
+                        offsetY = e.offsetY; // Store initial Y offset
+                        // Highlight the current icon
+                        icon.classList.add("selected");
+                        icon.style.position = "absolute"; // Allows free dragging
+                        // Start listening for movement
+                        document.addEventListener("mousemove", onDrag);
+                        // Listen for mouse release
+                        document.addEventListener("mouseup", onStopDrag);
+                    });
+                });
+
+                // Moves the icon based on mouse position
+                function onDrag(e) {
+                    if (!active) return;
+                    active.style.left = e.pageX - offsetX + "px";
+                    active.style.top = e.pageY - offsetY + "px";
+                }
+
+                // Ends drag and cleans up listeners
+                function onStopDrag() {
+                    active.classList.remove("selected");
+                    active = null;
+                    document.removeEventListener("mousemove", onDrag);
+                    document.removeEventListener("mouseup", onStopDrag);
+                }
+            });
+
+            // Resets all icons to a grid layout
+            function resetToGrid() {
+                const apps = document.querySelector(".apps");
+                const icons = document.querySelectorAll(".apps > div");
+
+                // Change container to a 4-column grid
+                apps.className = "apps grid grid-cols-4 gap-4 mt-4 px-4";
+
+                // Reset icon positions and classes
+                icons.forEach((icon) => {
+                    icon.style.position = "";
+                    icon.style.left = "";
+                    icon.style.top = "";
+                    icon.className =
+                        "flex justify-center items-center bg-white rounded-xl h-20 w-20";
+                });
+            }
+        </script>
+        <!-- Button to trigger layout reset -->
+        <div class="fixed bottom-4 right-4 space-x-2">
+            <button
+                onclick="resetToGrid()"
+                class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
             >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M12 18l.01 0" />
-              <path d="M9.172 15.172a4 4 0 0 1 5.656 0" />
-              <path d="M6.343 12.343a8 8 0 0 1 11.314 0" />
-            </svg>
-          </div>
-          <div class="status-bar__battery">100%</div>
+                Reset to Grid
+            </button>
         </div>
-      </div>
-      <!-- Use a grid layout with 4 equal columns and gap between icons -->
-      <div class="apps flex items-center mt-4 justify-evenly">
-        <div
-          class="app1 flex justify-center items-center bg-white rounded-xl h-20 w-20"
-        >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/640px-Instagram_icon.png"
-            alt="Instagram"
-            class="app-icon"
-          />
-        </div>
-        <div
-          class="app2 flex justify-center items-center bg-white rounded-xl h-20 w-20"
-        >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/App_Store_%28iOS%29.svg/512px-App_Store_%28iOS%29.svg.png"
-            alt="AppStore"
-            class="app-icon"
-          />
-        </div>
-        <div
-          class="app3 flex justify-center items-center bg-white rounded-xl h-20 w-20"
-        >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Safari_browser_logo.svg/800px-Safari_browser_logo.svg.png"
-            alt="Safari"
-            class="app-icon"
-          />
-        </div>
-        <div
-          class="app4 flex justify-center items-center bg-white rounded-xl h-20 w-20"
-        >
-          <img
-            src="https://www.cdnlogo.com/logos/w/29/whatsapp-icon.svg"
-            alt="WhatsApp"
-            class="app-icon"
-          />
-        </div>
-      </div>
-    </div>
-    <script>
-      window.addEventListener("load", () => {
-        const icons = document.querySelectorAll(".apps > div");
-        let active = null;
-        let offsetX = 0;
-        let offsetY = 0;
-
-        icons.forEach((icon) => {
-          icon.addEventListener("mousedown", (e) => {
-            active = icon;
-            offsetX = e.offsetX;
-            offsetY = e.offsetY;
-            icon.style.position = "absolute";
-            document.addEventListener("mousemove", onDrag);
-            document.addEventListener("mouseup", onStopDrag);
-          });
-        });
-
-        function onDrag(e) {
-          if (!active) return;
-          active.style.left = e.pageX - offsetX + "px";
-          active.style.top = e.pageY - offsetY + "px";
-        }
-
-        function onStopDrag() {
-          active = null;
-          document.removeEventListener("mousemove", onDrag);
-          document.removeEventListener("mouseup", onStopDrag);
-        }
-      });
-
-      function resetToGrid() {
-        const apps = document.querySelector(".apps");
-        const icons = document.querySelectorAll(".apps > div");
-
-        // Reset container to grid
-        apps.className = "apps grid grid-cols-4 gap-4 mt-4 px-4";
-
-        // Reset each icon
-        icons.forEach((icon) => {
-          icon.style.position = "";
-          icon.style.left = "";
-          icon.style.top = "";
-          icon.className =
-            "flex justify-center items-center bg-white rounded-xl h-20 w-20";
-        });
-      }
-    </script>
-    <div class="fixed bottom-4 right-4 space-x-2">
-      <button
-        onclick="resetToGrid()"
-        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-      >
-        Reset to Grid
-      </button>
-    </div>
-  </body>
+    </body>
 </html>
