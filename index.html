@@ -1,100 +1,98 @@
 <!DOCTYPE html>
-<!-- Defines the document as HTML5 -->
 <html lang="en">
-  <!-- Sets the primary language of the page to English -->
   <head>
-    <!-- Character encoding -->
     <meta charset="UTF-8" />
-    <!-- Makes the page mobile-responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Page title -->
     <title>iphone online dummy</title>
-    <!-- Tailwind CSS for utility classes -->
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <!-- Inline CSS for basic styling -->
     <style>
       * {
-        margin: 0; /* Removes default margin */
-        padding: 0; /* Removes default padding */
-        box-sizing: border-box; /* Ensures consistent width/height calculations */
-        font-family: "SF Pro Rounded", sans-serif; /* Sets default font */
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "SF Pro Rounded", sans-serif;
       }
       body {
-        height: 100vh; /* Full viewport height */
-        display: flex; /* Uses flex layout */
-        justify-content: center; /* Center horizontally */
-        align-items: center; /* Center vertically */
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       .screen {
-        width: 375px; /* Typical phone width */
-        height: 812px; /* Typical phone height */
+        width: 375px;
+        height: 812px;
         background-image: url("https://images.unsplash.com/photo-1737917818689-f3b3708de5d7?q=80&w=1926&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-        background-size: cover; /* Scales image to cover area */
-        border-radius: 50px; /* Rounded corners */
-        overflow: hidden; /* Hides overflowing elements */
+        background-size: cover;
+        border-radius: 50px;
+        overflow: hidden;
+        position: relative;
       }
-      /* Outline style for the icon when selected for drag */
       .selected {
         position: relative;
         cursor: move;
         outline: 3px dotted rgb(0, 0, 0);
       }
       .app-icon {
-        width: 80%; /* Icon width relative to parent */
-        height: 80%; /* Icon height relative to parent */
-        object-fit: contain; /* Keeps aspect ratio */
-        pointer-events: none; /* Disables mouse events on image */
-        padding: 2px; /* Spacing around the icon */
+        width: 80%;
+        height: 80%;
+        object-fit: contain;
+        pointer-events: none;
+        padding: 2px;
       }
       .apps > div {
-        user-select: none; /* Disables text selection */
-        -webkit-user-select: none; /* Disables text selection in WebKit browsers */
+        user-select: none;
+        -webkit-user-select: none;
+        position: relative;
       }
-      /* For smaller screens, remove scrollbars and adjust layout */
+      .resize-handle {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #000000;
+        bottom: 0;
+        right: 0;
+        cursor: se-resize;
+        display: none;
+      }
+      .rotate-handle {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #000000;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        cursor: grab;
+        border-radius: 50%;
+        display: none;
+      }
+      .selected .resize-handle,
+      .selected .rotate-handle {
+        display: block;
+      }
       @media (max-width: 768px) {
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          overflow: hidden;
-        }
+
         body {
           height: 100vh;
         }
         .screen {
-          width: 100%; /* Full width on small screens */
-          height: 100vh; /* Full height on small screens */
-          border-radius: 0; /* Removes corner radius */
+          width: 100%;
+          height: 100vh;
+          border-radius: 0;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Main phone screen container -->
     <div class="screen">
-      <!-- Status bar at the top -->
-      <div
-        class="status-bar text-white flex text-l justify-between items-center px-8 py-3"
-      >
+      <div class="status-bar text-white flex text-l justify-between items-center px-8 py-3">
         <div class="status-bar__time">9:41</div>
         <div class="right flex justify-between items-center">
-          <!-- Display network icon -->
           <div class="status-bar__network">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-antenna-bars-5"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-antenna-bars-5">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M6 18l0 -3" />
               <path d="M10 18l0 -6" />
@@ -102,140 +100,199 @@
               <path d="M18 18l0 -12" />
             </svg>
           </div>
-          <!-- Display Wi-Fi icon -->
           <div class="status-bar__wifi">
-            <svg
-              xmlns="http://www.w3.org/20000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-wifi-2"
-            >
+            <svg xmlns="http://www.w3.org/20000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-wifi-2">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M12 18l.01 0" />
               <path d="M9.172 15.172a4 4 0 0 1 5.656 0" />
               <path d="M6.343 12.343a8 8 0 0 1 11.314 0" />
             </svg>
           </div>
-          <!-- Display battery info text -->
           <div class="status-bar__battery">100%</div>
         </div>
       </div>
-      <!-- Container for app icons -->
       <div class="apps flex items-center mt-4 justify-evenly">
-        <!-- First app icon with background -->
-        <div
-          class="app1 flex justify-center items-center bg-white rounded-xl h-20 w-20"
-        >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/640px-Instagram_icon.png"
-            alt="Instagram"
-            class="app-icon"
-          />
+        <div class="app1 flex justify-center items-center bg-white rounded-xl h-20 w-20">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/640px-Instagram_icon.png" alt="Instagram" class="app-icon" />
+          <div class="resize-handle"></div>
+          <div class="rotate-handle"></div>
         </div>
-        <!-- Second app icon -->
-        <div
-          class="app2 flex justify-center items-center bg-white rounded-xl h-20 w-20"
-        >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/App_Store_%28iOS%29.svg/512px-App_Store_%28iOS%29.svg.png"
-            alt="AppStore"
-            class="app-icon"
-          />
+        <div class="app2 flex justify-center items-center bg-white rounded-xl h-20 w-20">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/App_Store_%28iOS%29.svg/512px-App_Store_%28iOS%29.svg.png" alt="AppStore" class="app-icon" />
+          <div class="resize-handle"></div>
+          <div class="rotate-handle"></div>
         </div>
-        <!-- Third app icon -->
-        <div
-          class="app3 flex justify-center items-center bg-white rounded-xl h-20 w-20"
-        >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Safari_browser_logo.svg/800px-Safari_browser_logo.svg.png"
-            alt="Safari"
-            class="app-icon"
-          />
+        <div class="app3 flex justify-center items-center bg-white rounded-xl h-20 w-20">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Safari_browser_logo.svg/800px-Safari_browser_logo.svg.png" alt="Safari" class="app-icon" />
+          <div class="resize-handle"></div>
+          <div class="rotate-handle"></div>
         </div>
-        <!-- Fourth app icon -->
-        <div
-          class="app4 flex justify-center items-center bg-white rounded-xl h-20 w-20"
-        >
-          <img
-            src="https://www.cdnlogo.com/logos/w/29/whatsapp-icon.svg"
-            alt="WhatsApp"
-            class="app-icon"
-          />
+        <div class="app4 flex justify-center items-center bg-white rounded-xl h-20 w-20">
+          <img src="https://www.cdnlogo.com/logos/w/29/whatsapp-icon.svg" alt="WhatsApp" class="app-icon" />
+          <div class="resize-handle"></div>
+          <div class="rotate-handle"></div>
         </div>
       </div>
     </div>
     <script>
-      // Listens for the page to fully load
       window.addEventListener("load", () => {
-        const icons = document.querySelectorAll(".apps > div"); // Get all app divs
-        let active = null; // Will hold the currently dragged icon
-        let offsetX = 0; // X offset for dragging
-        let offsetY = 0; // Y offset for dragging
+        const screen = document.querySelector(".screen");
+        const icons = document.querySelectorAll(".apps > div");
+        let active = null;
+        let isResizing = false;
+        let isRotating = false;
+        let offsetX = 0;
+        let offsetY = 0;
+        let initialAngle = 0;
+        let currentAngle = 0;
+        let aspectRatio = 1; // For maintaining square proportion
 
-        // Add mouse event listeners to each icon
+        // Add click handler to screen for deselection
+        screen.addEventListener("mousedown", (e) => {
+          // Check if click is directly on the screen or apps container
+          if (e.target === screen || e.target.classList.contains("apps")) {
+            deselectAll();
+          }
+        });
+
+        function deselectAll() {
+          icons.forEach(icon => {
+            icon.classList.remove("selected");
+            icon.style.zIndex = "1";
+          });
+          active = null;
+        }
+
         icons.forEach((icon) => {
+          const resizeHandle = icon.querySelector(".resize-handle");
+          const rotateHandle = icon.querySelector(".rotate-handle");
+
           icon.addEventListener("mousedown", (e) => {
-            // Remove 'selected' from any other icon
-            icons.forEach((i) => i.classList.remove("selected"));
-            active = icon; // The icon being dragged
-            offsetX = e.offsetX; // Store initial X offset
-            offsetY = e.offsetY; // Store initial Y offset
-            // Highlight the current icon
-            icon.classList.add("selected");
-            icon.style.position = "absolute"; // Allows free dragging
-            // Start listening for movement
-            document.addEventListener("mousemove", onDrag);
-            // Listen for mouse release
-            document.addEventListener("mouseup", onStopDrag);
+            e.stopPropagation(); // Prevent event from bubbling to screen
+            if (e.target === resizeHandle) {
+              startResize(e, icon);
+            } else if (e.target === rotateHandle) {
+              startRotate(e, icon);
+            } else {
+              startDrag(e, icon);
+            }
           });
         });
 
-        // Moves the icon based on mouse position
-        function onDrag(e) {
-          if (!active) return;
-          active.style.left = e.pageX - offsetX + "px";
-          active.style.top = e.pageY - offsetY + "px";
+        function startDrag(e, icon) {
+          deselectAll();
+          active = icon;
+          offsetX = e.offsetX;
+          offsetY = e.offsetY;
+          icon.classList.add("selected");
+          icon.style.position = "absolute";
+          icon.style.zIndex = "1000";
+          document.addEventListener("mousemove", onDrag);
+          document.addEventListener("mouseup", onStop);
         }
 
-        // Ends drag and cleans up listeners
-        function onStopDrag() {
-          active.classList.remove("selected");
-          active = null;
+        function startResize(e, icon) {
+          e.stopPropagation();
+          isResizing = true;
+          active = icon;
+          const startWidth = icon.offsetWidth;
+          const startX = e.pageX;
+          const startY = e.pageY;
+
+          function onResize(e) {
+            if (!isResizing) return;
+            const dx = e.pageX - startX;
+            const newSize = Math.max(40, startWidth + dx); // Minimum size of 40px
+            active.style.width = `${newSize}px`;
+            active.style.height = `${newSize}px`; // Maintain square proportion
+          }
+
+          document.addEventListener("mousemove", onResize);
+          document.addEventListener("mouseup", () => {
+            isResizing = false;
+            document.removeEventListener("mousemove", onResize);
+          });
+        }
+
+        function startRotate(e, icon) {
+          e.stopPropagation();
+          isRotating = true;
+          active = icon;
+          const iconRect = icon.getBoundingClientRect();
+          const iconCenterX = iconRect.left + iconRect.width / 2;
+          const iconCenterY = iconRect.top + iconRect.height / 2;
+          initialAngle = Math.atan2(e.pageY - iconCenterY, e.pageX - iconCenterX);
+          currentAngle = getRotationAngle(icon);
+
+          function onRotate(e) {
+            if (!isRotating) return;
+            const angle = Math.atan2(e.pageY - iconCenterY, e.pageX - iconCenterX);
+            const rotation = angle - initialAngle;
+            const newAngle = (currentAngle + rotation * (180 / Math.PI)) % 360;
+            active.style.transform = `rotate(${newAngle}deg)`;
+          }
+
+          document.addEventListener("mousemove", onRotate);
+          document.addEventListener("mouseup", () => {
+            isRotating = false;
+            document.removeEventListener("mousemove", onRotate);
+          });
+        }
+
+        function onDrag(e) {
+          if (!active || isResizing || isRotating) return;
+          const screenRect = screen.getBoundingClientRect();
+          const iconRect = active.getBoundingClientRect();
+          
+          // Calculate new position while keeping the icon within screen bounds
+          let newX = e.pageX - offsetX - screenRect.left;
+          let newY = e.pageY - offsetY - screenRect.top;
+          
+          // Apply bounds checking
+          newX = Math.max(0, Math.min(newX, screenRect.width - iconRect.width));
+          newY = Math.max(0, Math.min(newY, screenRect.height - iconRect.height));
+          
+          active.style.left = `${newX}px`;
+          active.style.top = `${newY}px`;
+        }
+
+        function onStop() {
+          isResizing = false;
+          isRotating = false;
           document.removeEventListener("mousemove", onDrag);
-          document.removeEventListener("mouseup", onStopDrag);
+          document.removeEventListener("mouseup", onStop);
+        }
+
+        function getRotationAngle(element) {
+          const transform = window.getComputedStyle(element).getPropertyValue('transform');
+          if (transform === 'none') return 0;
+          const values = transform.split('(')[1].split(')')[0].split(',');
+          const a = values[0];
+          const b = values[1];
+          return Math.round(Math.atan2(b, a) * (180 / Math.PI));
         }
       });
 
-      // Resets all icons to a grid layout
       function resetToGrid() {
         const apps = document.querySelector(".apps");
         const icons = document.querySelectorAll(".apps > div");
 
-        // Change container to a 4-column grid
-        apps.className = "apps grid grid-cols-4 gap-4 mt-4 px-4";
+        apps.className = "apps flex items-center mt-4 justify-evenly";
 
-        // Reset icon positions and classes
         icons.forEach((icon) => {
           icon.style.position = "";
           icon.style.left = "";
           icon.style.top = "";
-          icon.className =
-            "flex justify-center items-center bg-white rounded-xl h-20 w-20";
+          icon.style.transform = "";
+          icon.style.width = "";
+          icon.style.height = "";
+          icon.style.zIndex = "";
+          icon.className = "flex justify-center items-center bg-white rounded-xl h-20 w-20";
         });
       }
     </script>
-    <!-- Button to trigger layout reset -->
     <div class="fixed bottom-4 right-4 space-x-2">
-      <button
-        onclick="resetToGrid()"
-        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-      >
+      <button onclick="resetToGrid()" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
         Reset to Grid
       </button>
     </div>
