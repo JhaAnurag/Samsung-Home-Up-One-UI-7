@@ -6,3 +6,4 @@
 - ios widgets
 - lockscreen customization miui
 - app open and close
+- animations
